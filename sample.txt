@@ -1,0 +1,25 @@
+glagent-EfwpsKz1TYRk2qFNUR3MXb7h-hzYsnox29wx1bxBNQ6pyZhxSA
+
+helm repo add gitlab https://charts.gitlab.io
+helm repo update
+helm upgrade --install agent gitlab/gitlab-agent \
+    --namespace gitlab-agent-agent \
+    --create-namespace \
+    --set config.token=glagent-EfwpsKz1TYRk2qFNUR3MXb7h-hzYsnox29wx1bxBNQ6pyZhxSA \
+    --set config.kasAddress=wss://kas.gitlab.com
+
+
+user_access:
+  access_as:
+      agent: {} # for free
+      user: {} # for premium+
+  projects:
+      - id: <current project path>
+
+
+
+
+You can push a new image to this repository using the CLI:
+
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname

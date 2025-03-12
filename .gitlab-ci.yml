@@ -1,0 +1,14 @@
+stages:
+  -build
+  -deploy
+
+build_job:
+  stage:build
+  script: |
+    echo "Building the application"
+    docker login -u $DOCKER_EMAIL -p $DOCKER_PASSWORD
+
+deploy_job:
+  stage:deploy
+  tags:
+    - ec2-runner
